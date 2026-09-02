@@ -198,7 +198,7 @@ function createConfetti() {
 /* =================================BIRTHDAY COUNTDOWN================================= */
 
 // DON'T FORGET TO CHANGE DATE
-const birthday = new Date("2026-09-07T02:41:00+05:30").getTime();
+const birthday = new Date("2026-09-03T02:42:00+05:30").getTime();
 
 const storyContent = document.getElementById("story-content");
 const countdown = document.getElementById("countdown");
