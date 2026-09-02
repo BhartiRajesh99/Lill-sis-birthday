@@ -1,4 +1,3 @@
-
 gsap.registerPlugin(ScrollTrigger);
 
 /*========================================HERO ANIMATION========================================*/
@@ -198,7 +197,7 @@ function createConfetti() {
 /* =================================BIRTHDAY COUNTDOWN================================= */
 
 // DON'T FORGET TO CHANGE DATE
-const birthday = new Date("2026-09-03T02:52:00+05:30").getTime();
+const birthday = new Date("2026-09-07T00:00:00+05:30").getTime();
 
 const storyContent = document.getElementById("story-content");
 const countdown = document.getElementById("countdown");
@@ -212,7 +211,6 @@ gsap.set(storyContent, {
   y: 40,
   scale: 0.98,
 });
-
 
 const countdownTimer = setInterval(updateCountdown, 1000);
 
@@ -252,8 +250,7 @@ function updateCountdown() {
       "0"
     );
   } else if (!celebrationStarted) {
-
-  /* ---------------------------------BIRTHDAY HAS ARRIVED --------------------------------- */
+    /* ---------------------------------BIRTHDAY HAS ARRIVED --------------------------------- */
     celebrationStarted = true;
 
     // Stop checking the timer
