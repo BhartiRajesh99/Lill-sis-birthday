@@ -197,7 +197,7 @@ function createConfetti() {
 /* =================================BIRTHDAY COUNTDOWN================================= */
 
 // DON'T FORGET TO CHANGE DATE
-const birthday = new Date("2026-09-07T00:00:00+05:30").getTime();
+const birthday = new Date("2026-09-01T00:00:00+05:30").getTime();
 
 const storyContent = document.getElementById("story-content");
 const countdown = document.getElementById("countdown");
@@ -335,3 +335,52 @@ gsap.from(".memory-photo", {
     toggleActions: "play none none reverse",
   },
 });
+
+// FLAOTING ANIMATIONS
+
+const decorationContainer = document.querySelector(".floating-decorations");
+
+const decorations = [
+  "💌",
+  "💗",
+  "💕",
+  "💖",
+  "✨",
+  "💫",
+  "🌸",
+  "🪽",
+  "😎",
+  "🥰",
+  "🍕",
+  "🍔",
+  "🍬",
+  "🥂",
+  "✉️",
+];
+
+function createDecoration() {
+  const item = document.createElement("span");
+
+  item.className = "floating-item";
+  item.textContent =
+    decorations[Math.floor(Math.random() * decorations.length)];
+
+  item.style.left = Math.random() * 100 + "vw";
+  item.style.fontSize = 18 + Math.random() * 22 + "px";
+
+  item.style.setProperty("--drift", `${-100 + Math.random() * 200}px`);
+
+  item.style.setProperty("--rotation", `${-30 + Math.random() * 60}deg`);
+
+  const duration = 6 + Math.random() * 5;
+
+  item.style.animationDuration = `${duration}s`;
+
+  decorationContainer.appendChild(item);
+
+  setTimeout(() => {
+    item.remove();
+  }, duration * 1000);
+}
+
+setInterval(createDecoration, 700);

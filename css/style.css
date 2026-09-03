@@ -335,11 +335,133 @@ strong {
   letter-spacing: 0.2em;
 }
 
+/* ================FLOATING ANIMATIONS====================== */
+
+.floating-decorations {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.floating-item {
+  position: absolute;
+  bottom: -60px;
+  font-size: 25px;
+  opacity: 0;
+  animation: flyUp linear forwards;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes flyUp {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(0.7);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    transform: translate(var(--drift), -50vh) rotate(var(--rotation)) scale(1);
+    opacity: 0.9;
+  }
+
+  100% {
+    transform: translate(calc(var(--drift) * -0.5), -115vh)
+      rotate(calc(var(--rotation) * -1)) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* 2 */
+
+.letter {
+  width: 38px;
+  height: 28px;
+  background: #fff;
+  border-radius: 4px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,.15);
+  transform: rotate(-8deg);
+}
+
+.letter::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f4b6c2;
+  clip-path: polygon(0 0, 50% 55%, 100% 0);
+}
+
+.letter span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -20%);
+  color: #e85d75;
+  font-size: 13px;
+}
+
 /* --------------------MEMORY CARD-------------------- */
 
-.memory-card {
-  max-width: 650px;
+.insta-meet-images {
+  display: grid;
+  grid-template-columns: 1fr 0.5fr;
+  align-items: center;
+  justify-self: center;
+  width: 100%;
+  margin: 40px 0;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background-color: var(--pink-soft);
+}
 
+.meet-photo {
+  width: 100%;
+}
+
+.meet-photo span,
+.chat-photo span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.meet-photo img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+.chat-photo {
+  width: 100%;
+}
+
+.chat-photo img {
+  width: 70%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.chole-chat-photo img {
+  width: 180px;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+
+.memory-card {
+  max-width: 700px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
   margin-top: 40px;
   padding: 40px;
 
@@ -350,6 +472,18 @@ strong {
   background: rgba(255, 255, 255, 0.025);
 
   backdrop-filter: blur(10px);
+}
+
+@media (max-width: 540px) {
+  .insta-meet-images {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .chat-photo {
+    width: 140px;
+    justify-self: center;
+  }
 }
 
 /* --------------------STATS-------------------- */
@@ -469,6 +603,7 @@ strong {
   }
 
   .memory-card {
+    flex-direction: column;
     padding: 28px 22px;
   }
 
