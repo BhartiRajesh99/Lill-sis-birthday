@@ -349,13 +349,8 @@ const decorations = [
   "💫",
   "🌸",
   "🪽",
-  "😎",
-  "🥰",
-  "🍕",
-  "🍔",
   "🍬",
   "🥂",
-  "✉️",
 ];
 
 function createDecoration() {
@@ -384,3 +379,81 @@ function createDecoration() {
 }
 
 setInterval(createDecoration, 700);
+
+gsap.registerPlugin(ScrollTrigger);
+
+const videoSection = document.querySelector(".video-section");
+
+const videoTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: videoSection,
+    start: "top 75%",
+    toggleActions: "play none none reverse",
+  },
+});
+
+/* Intro */
+
+videoTl.from(".video-intro .eyebrow", {
+  y: 20,
+  opacity: 0,
+  duration: 0.5,
+});
+
+videoTl.from(".video-intro h2", {
+  y: 40,
+  opacity: 0,
+  duration: 0.7,
+  ease: "power3.out",
+});
+
+videoTl.from(".video-intro-text", {
+  y: 25,
+  opacity: 0,
+  duration: 0.6,
+});
+
+/* Movie card */
+
+videoTl.from(".movie-container", {
+  y: 100,
+  scale: 0.85,
+  rotationX: 12,
+  opacity: 0,
+  duration: 1.2,
+  ease: "power3.out",
+});
+
+/* Label */
+
+videoTl.from(
+  ".movie-label",
+  {
+    scale: 0,
+    rotation: -10,
+    opacity: 0,
+    duration: 0.5,
+    ease: "back.out(2)",
+  },
+  "-=0.6"
+);
+
+/* Caption */
+
+videoTl.from(
+  ".movie-caption",
+  {
+    y: 15,
+    opacity: 0,
+    duration: 0.5,
+  },
+  "-=0.3"
+);
+
+/* Ending */
+
+videoTl.from(".video-ending", {
+  y: 20,
+  opacity: 0,
+  duration: 0.5,
+});
